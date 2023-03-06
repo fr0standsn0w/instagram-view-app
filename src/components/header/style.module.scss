@@ -1,0 +1,41 @@
+.header{
+  width: 100%;
+  background: #DFDFDF;
+  .headerContainer{
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logoContainer{
+      a{
+        color: black;
+        font-weight: 400;
+        font-size: 1em;
+      }
+    }
+    .menuContainer{
+      ul {
+        * + * {
+          margin-left: 1.250em;
+        }
+        display: flex;
+        li{
+          a{
+            font-size: 0.830em;
+            color: #6A6868;
+          }
+        }
+        .langContainer{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.830em;
+          color: #6A6868;
+        }
+      }
+    }
+  }
+}
