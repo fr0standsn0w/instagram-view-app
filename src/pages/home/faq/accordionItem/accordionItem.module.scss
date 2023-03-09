@@ -1,0 +1,26 @@
+.accordionContainer {
+  border-bottom: 1px solid #BBB4B4;
+  .accordion {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2em 0;
+    p {
+      font-size: 1em;
+    }
+    .arrowContainer{
+
+    }
+  }
+  &:first-child {
+    border-top: 1px solid #BBB4B4;
+  }
+  .textBody{
+    //transition: 0.3s;
+    p{
+      margin-top: 1em;
+      padding-bottom: 1em;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.firstBlockContainer{
+  width: 100%;
+  max-width: 978px;
+  margin: 5em auto 0 auto;
+  position: relative;
+  padding: 0 10px 0 10px;
+
+  .backgroundSun{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    svg{
+      //width: 100%;
+    }
+  }
+  .firstBlockBody{
+    padding: 5em 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 10px;
+    h2{
+      font-size: 1.5em;
+      width: 100%;
+      max-width: 450px;
+    }
+    p{
+      font-size: 0.83em;
+      width: 100%;
+      max-width: 450px;
+    }
+  }
+}
