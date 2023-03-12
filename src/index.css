@@ -32,3 +32,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
 }
 svg {display: block}
+@media screen and (max-width: 425px){
+    html, body{
+        font-size: calc(18px + (20 - 18)*((100vw - 320px) / (425 - 320)));
+    }
+}

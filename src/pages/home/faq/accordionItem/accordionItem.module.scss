@@ -1,5 +1,7 @@
 .accordionContainer {
   border-bottom: 1px solid #BBB4B4;
+  cursor: pointer;
+  transition: 0.3s;
   .accordion {
     width: 100%;
     display: flex;
@@ -10,7 +12,9 @@
       font-size: 1em;
     }
     .arrowContainer{
-
+      svg{
+        transition: 0.3s;
+      }
     }
   }
   &:first-child {

@@ -1,0 +1,69 @@
+.profileInfoContainer{
+  width: 100%;
+  max-width: 977px;
+  padding: 0 10px;
+  margin: 4em auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  .profilePicContainer{
+    background: rgba(187, 180, 180, 0.24);
+    border-radius: 1.750em;
+    padding: 5px;
+    .profilePic {
+      background: linear-gradient(180deg, #FF00C7 0%, rgba(255, 153, 0, 0.66) 51.04%, rgba(0, 26, 255, 0) 100%);
+      padding: 6px;
+      width: 8em;
+      height: 8em;
+      border-radius: 50%;
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        border-radius: 50%;
+        width: 8em;
+        height: 8em;
+      }
+    }
+  }
+  .mainInfo{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 14px;
+    width: 100%;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    //row-gap: 40px;
+    .mainInfoContent {
+      height: 6em;
+      display: block;
+      h4 {
+        font-weight: 300;
+        font-size: 1em;
+      }
+      p {
+        font-size: 0.83em;
+        margin-top: 12px;
+      }
+    }
+    .status{
+      font-size: 1em;
+      color: #09FF3F;
+    }
+    @media screen and (max-width: 425px){
+      height: 8em;
+    }
+  }
+}
+@media screen and (max-width: 570px){
+  .profileInfoContainer {
+    .profilePicContainer {
+      .profilePic {
+      }
+    }
+    .mainInfo{
+
+    }
+  }
+}

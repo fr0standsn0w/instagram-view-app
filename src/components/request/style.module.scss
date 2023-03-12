@@ -61,6 +61,10 @@
             color: black;
           }
         }
+        @media screen and (max-width: 425px) {
+          flex-direction: column;
+          row-gap: 0.83em;
+        }
       }
     }
   }

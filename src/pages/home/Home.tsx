@@ -6,12 +6,12 @@ import Faq from "./faq/faq";
 
 const Home = () => {
     return (
-        <div>
+        <>
             <Request/>
             <FirstBlock/>
             <Benefits/>
             <Faq/>
-        </div>
+        </>
     );
 };
 

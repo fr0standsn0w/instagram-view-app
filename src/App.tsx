@@ -5,6 +5,9 @@ import {useDispatch} from "react-redux";
 import {setLanguage} from "./redux/languageSlice";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/home/Home";
+import Footer from "./components/footer/Footer";
+import ProfilePage from "./pages/profile/profilePage";
+import {AnimatePresence} from "framer-motion";
 
 
 const languageOptions = [
@@ -27,12 +30,14 @@ export const LanguageToggle = () => {
 
 const App = () => {
     return (
-        <>
+        <AnimatePresence>
             <Header/>
             <Routes>
                 <Route path={'/'} element={<Home/>}/>
+                <Route path={'/profile'} element={<ProfilePage/>}/>
             </Routes>
-        </>
+            <Footer/>
+        </AnimatePresence>
     );
 }
 
