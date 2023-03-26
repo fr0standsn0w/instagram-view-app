@@ -22,6 +22,7 @@
     .publication{
       width: 230px;
       .publicationImgContainer{
+        cursor: pointer;
         width: 100%;
         img{
           width: 100%;
@@ -76,6 +77,7 @@
         img{
           object-fit: contain;
           width: 100%;
+          max-height: 680px;
         }
       }
       .fullPublicationDesc{
@@ -86,6 +88,11 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+          p{
+            &:last-child{
+              color: #BBB4B4;
+            }
+          }
         }
         .publicationDesc{
           display: flex;

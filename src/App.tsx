@@ -30,14 +30,14 @@ export const LanguageToggle = () => {
 
 const App = () => {
     return (
-        <AnimatePresence>
+        <>
             <Header/>
             <Routes>
                 <Route path={'/'} element={<Home/>}/>
                 <Route path={'/profile'} element={<ProfilePage/>}/>
             </Routes>
             <Footer/>
-        </AnimatePresence>
+        </>
     );
 }
 

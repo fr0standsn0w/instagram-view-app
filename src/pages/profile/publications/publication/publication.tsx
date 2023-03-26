@@ -26,18 +26,18 @@ const Publication = ({img}: imgI) => {
     }
     return (
         <div className={style.publication}>
-            <div className={style.publicationImgContainer}>
+            <div className={style.publicationImgContainer} onClick={() => {
+                setOpen(true)
+            }}>
                 <img src={img} alt={'Simple img'}/>
             </div>
-            <div className={style.publicationData}>
+{/*            <div className={style.publicationData}>
                 <p>05 January 2023</p>
                 <p>19:21:32</p>
             </div>
-            <button onClick={() => {
-                setOpen(true)
-            }}>Learn more
-            </button>
-            <AnimatePresence>
+            <button >Learn more
+            </button>*/}
+            <AnimatePresence key={"fullPictureContainer"}>
             {open &&
                     <motion.div key={"fullPicture"} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className={style.fullPublication}>
                         <div className={style.fullPublicationImg}>
@@ -46,11 +46,10 @@ const Publication = ({img}: imgI) => {
                         <div className={style.fullPublicationDesc}>
                             <div className={style.userData}>
                                 <p>@sinitovskiy1</p>
-                                <p>05 January 2023 19:21:32</p>
+                                <p>Likes 99</p>
                             </div>
                             <div className={style.publicationDesc}>
                                 <p>В поле.</p>
-                                <p>Likes 99</p>
                             </div>
                             <button onClick={()=>downloadImage(img)}>Save</button>
                         </div>

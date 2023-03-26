@@ -1,8 +1,10 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import languageSlice from "./languageSlice";
+import profileSlice from "./profileSlice";
 
 const rootReducer = combineReducers({
-    language: languageSlice
+    language: languageSlice,
+    profile: profileSlice
 })
 
 export type IRootState = ReturnType<typeof rootReducer>

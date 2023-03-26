@@ -27,7 +27,7 @@ const AccordionItem: FC<PropsType<itemListI>> = (props) => {
             </div>
             <AnimatePresence>
                 {isOpen &&
-                    <motion.div
+                    <motion.div key={"accordion"}
                         initial={{transform: "scaleY(0)", transformOrigin: "top"}}
                         animate={{transform: "scaleY(1)"}}
                         transition={{ease: "easeInOut", duration: 0.3}}
