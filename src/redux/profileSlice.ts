@@ -13,8 +13,10 @@ const profileSlice = createSlice({
     reducers: {
         setProfile(state, action) {
             state.data = action.payload
-        }
+        },
+        reset: () => initialState
     }
 })
 export default profileSlice.reducer;
 export const {setProfile} = profileSlice.actions
+export const {reset} = profileSlice.actions

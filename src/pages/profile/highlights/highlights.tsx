@@ -11,7 +11,7 @@ const Highlights = () => {
             <h2>Highlights</h2>
             <p className={style.showMore}>Show more</p>
             <div className={style.highlights}>
-                {cache?.highlights?.map(el => <Highlight pic={`${el.cover_media}`}/>)}
+                {cache?.highlights?.map(el => <Highlight key={Math.floor(Math.floor(Math.random() * (9999 - 1 + 1)) + 1)} pic={`${el.cover_media}`}/>)}
             </div>
         </div>
     );

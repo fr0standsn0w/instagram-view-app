@@ -1,18 +1,28 @@
 import React, {useEffect, useState} from 'react';
 import style from './style.module.scss';
-import useFetch from "../../hooks/useFetch";
 import {useDispatch} from "react-redux";
-import {setProfile} from "../../redux/profileSlice";
+import {reset, setProfile} from "../../redux/profileSlice";
 
 const Request = () => {
     const dispatch = useDispatch()
     const [name, setName] = useState<string>('')
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)
-    const {response, loading, error} = useFetch(`https://api.instafile.net/getinst.php?nm=suicide_tape_side&type=profile`)
+    const [response, setResponse] = useState<any>()
+    const [loading, setLoading] = useState<boolean>(true)
+    const handleSubmit = async () => {
+        await fetch(`https://api.instafile.net/getinst.php?nm=${name}&type=profile&page=1`)
+            .then(res => res.json())
+            .then(data => {
+                setResponse(data)
+                setLoading(false)
+            })
+    }
+
     useEffect(() => {
-        if (!loading){
+        if (!loading) {
             dispatch(setProfile(response))
         }
+
     }, [dispatch, loading, response])
     return (
         <div className={style.requestContainer}>
@@ -33,8 +43,12 @@ const Request = () => {
                         <input type="text" placeholder={"Paste name account"} value={name} onChange={handleChange}/>
                     </div>
                     <div className={style.buttonContainer}>
-                        <button>Download</button>
-                        <button>Reset</button>
+                        <button onClick={() => handleSubmit()}>Download
+                        </button>
+                        <button onClick={() => {
+                            dispatch(reset())
+                        }}>Reset
+                        </button>
                     </div>
                 </div>
             </div>
