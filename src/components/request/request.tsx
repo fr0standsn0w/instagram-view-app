@@ -2,8 +2,10 @@ import React, {useEffect, useState} from 'react';
 import style from './style.module.scss';
 import {useDispatch} from "react-redux";
 import {reset, setProfile} from "../../redux/profileSlice";
+import {useNavigate} from "react-router-dom";
 
 const Request = () => {
+    const navigation = useNavigate()
     const dispatch = useDispatch()
     const [name, setName] = useState<string>('')
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)
@@ -43,11 +45,14 @@ const Request = () => {
                         <input type="text" placeholder={"Paste name account"} value={name} onChange={handleChange}/>
                     </div>
                     <div className={style.buttonContainer}>
-                        <button onClick={() => handleSubmit()}>Download
-                        </button>
                         <button onClick={() => {
                             dispatch(reset())
-                        }}>Reset
+                            handleSubmit().then(() => {
+                                navigation('/profile')
+                            })
+                        }}>Download
+                        </button>
+                        <button onClick={() => {dispatch(reset())}}>Reset
                         </button>
                     </div>
                 </div>
