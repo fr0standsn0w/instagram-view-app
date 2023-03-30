@@ -37,6 +37,7 @@
           color: #6A6868;
           cursor: pointer;
           svg{
+            transition: 0.3s;
             margin-left: 0;
           }
         }
@@ -173,3 +174,4 @@
     }
   }
 }
+

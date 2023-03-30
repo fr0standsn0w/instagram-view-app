@@ -39,10 +39,11 @@ const Header = () => {
     const isActive = useMediaQuery('(max-width: 425px)');
     const [menuActive, setMenuActive] = useState(false)
     const language = useSelector((state:IRootState) => state.language.data)
+    console.log(isOpen)
     const items = [
-        {id: 1, value: 'Profile', href: '/profile'},
-        {id: 2, value: 'Posts', href: '/'},
-        {id: 4, value: 'Highlights', href: '/'},
+        {id: 1, value: `${language === 'EN' ? "Profile" : "Профиль"}`, href: '/profile'},
+        {id: 2, value: `${language === 'EN' ? "Posts" : "Посты"}`, href: '/'},
+        {id: 4, value: `${language === 'EN' ? "Highlights" : "Основные моменты"}`, href: '/'},
     ]
     return (
         <header className={style.header}>
@@ -57,7 +58,7 @@ const Header = () => {
                             <span/>
                         </div>
                         <main className={menuActive ? style.menuBurgerActive : style.menuBurger}>
-                            <Menu active={menuActive} setActive={setMenuActive} items={items}/>
+                            <Menu active={menuActive} setActive={setMenuActive} items={items} isOpen={isOpen} setIsOpen={setIsOpen}/>
                         </main>
                         <div className={menuActive ? style.layoutActive : style.layout} onClick={() => setMenuActive(!menuActive)}/>
                     </>
@@ -69,7 +70,8 @@ const Header = () => {
                             <li><Link to={''}>{language === 'EN' ? <>Highlights</> : <>Основные моменты</>}</Link></li>
                             <div className={style.langContainer} onClick={()=>setIsOpen(!isOpen)}>
                                 <LanguageToggle isOpen={isOpen}/>
-                                <svg width="21" height="13" viewBox="0 0 21 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="21" height="13" viewBox="0 0 21 13" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                     style={isOpen ? {transform: "rotate(180deg)"} : {transform: "rotate(0)"}}>
                                     <path
                                         d="M20.1372 2.01137L10.1372 12.0114L0.137207 2.01137L1.91221 0.236368L10.1372 8.46137L18.3622 0.236368L20.1372 2.01137Z"
                                         fill="#6A6868"/>
