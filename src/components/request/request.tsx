@@ -1,22 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import style from './style.module.scss';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {reset, setProfile} from "../../redux/profileSlice";
 import {useNavigate} from "react-router-dom";
+import {IRootState} from "../../redux/store";
 
 const Request = () => {
+    const language: string = useSelector((state: IRootState) => state.language.data)
     const navigation = useNavigate()
     const dispatch = useDispatch()
     const [name, setName] = useState<string>('')
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)
     const [response, setResponse] = useState<any>()
     const [loading, setLoading] = useState<boolean>(true)
+    const [err, setErr] = useState<string>()
     const handleSubmit = async () => {
-        await fetch(`https://api.instafile.net/getinst.php?nm=${name}&type=profile&page=1`)
+        if (!name) {
+            setErr(()=> (language==='en' ? 'Paste name account' : 'Введите имя аккаунта'))
+            return
+        }
+        await fetch(`https://api.instafile.net/getinst.php?nm=${name}&type=profile`)
             .then(res => res.json())
             .then(data => {
                 setResponse(data)
                 setLoading(false)
+            })
+            .catch((error:any) => {
+                setErr(error)
+                console.log(err)
             })
     }
 
@@ -24,15 +35,18 @@ const Request = () => {
         if (!loading) {
             dispatch(setProfile(response))
         }
-
     }, [dispatch, loading, response])
+
     return (
         <div className={style.requestContainer}>
             <div className={style.requestBody}>
                 <div className={style.requestContent}>
                     <h1>OPEN INSTAGRAM PROFILE</h1>
-                    <p>You can open profile and save content from instagram account. Paste the name of profile in instagram. Push the button "reset" to reload
-                        the page to load another account.
+                    <p>{language === 'EN' ? <>You can open profile and save content from instagram account. Paste the name of profile in instagram. Push the
+                        button "reset" to reload
+                        the page to load another account.</> : <>Вы можете открыть профиль и сохранить контент из учетной записи Instagram. Вставьте название
+                        профиля в instagram. Нажмите кнопку «сброс», чтобы перезагрузить
+                        страницу для загрузки другой учетной записи.</>}
                     </p>
                     <div className={style.searchElement}>
                         <label>
@@ -42,17 +56,19 @@ const Request = () => {
                                     fill="#6A6868"/>
                             </svg>
                         </label>
-                        <input type="text" placeholder={"Paste name account"} value={name} onChange={handleChange}/>
+                        <input type="text" placeholder={language === 'EN' ? "Paste name account" : "Вставьте название учетной записи"} value={name}
+                               onChange={handleChange}/>
                     </div>
                     <div className={style.buttonContainer}>
                         <button onClick={() => {
-                            dispatch(reset())
                             handleSubmit().then(() => {
                                 navigation('/profile')
                             })
                         }}>Download
                         </button>
-                        <button onClick={() => {dispatch(reset())}}>Reset
+                        <button onClick={() => {
+                            dispatch(reset())
+                        }}>Reset
                         </button>
                     </div>
                 </div>

@@ -29,11 +29,16 @@
           }
         }
         .langContainer{
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 0.830em;
           color: #6A6868;
+          cursor: pointer;
+          svg{
+            margin-left: 0;
+          }
         }
       }
     }
@@ -144,6 +149,27 @@
       z-index: 2;
       top: 0;
       left: 0;
+    }
+  }
+}
+.headerLanguages{
+  transform-origin: top;
+  position: absolute;
+  left: 0;
+  top: 25px;
+  background-color: white;
+  width: 100%;
+  border: 1px solid #6D6D6D;
+  border-radius: 4px;
+  p{
+    //margin-top: 5px;
+    margin-left: 0!important;
+    padding: 5px 2px;
+    &:first-child{
+      border-bottom: 1px solid #6D6D6D;
+    }
+    &:hover{
+      background-color: rgba(109, 109, 109, 0.2);
     }
   }
 }

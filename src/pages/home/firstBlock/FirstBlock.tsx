@@ -1,7 +1,8 @@
 import React from 'react';
 import style from './style.module.scss';
+import {ILanguage} from "../../../interfaces/languageInterface";
 
-const FirstBlock = () => {
+const FirstBlock = ({language}: ILanguage) => {
     return (
         <div className={style.firstBlockContainer}>
             <div className={style.backgroundSun}>
@@ -19,11 +20,18 @@ const FirstBlock = () => {
             </div>
 
             <div className={style.firstBlockBody}>
-                <h2>What is the Instagram story uploader?</h2>
+                <h2>{language === 'EN' ? <>What is the Instagram story uploader?</> : <>Что такое загрузчик историй в Instagram?</>}</h2>
                 <p>
-                    You can download instagram story download and instagram highlites by using the instagram story downloader service that we offer you on our
-                    website Instagram saver, instagram story will be downloaded in high quality full HD using online instagram screensaver. You can also use the
-                    service as an Instagram story viewer where you can Watch anonymous storis and highlighters.
+                    {language === 'EN' ? <>You can download instagram story download and instagram highlights by using the instagram story downloader service
+                        that we offer you on our
+                        website Instagram saver, instagram story will be downloaded in high quality full HD using online instagram screensaver. You can also use
+                        the
+                        service as an Instagram story viewer where you can Watch anonymous stories and highlighters.</> : <>Вы можете скачать загрузку историй из
+                        instagram и основные моменты из instagram, используя сервис загрузки историй из instagram, который мы предлагаем вам на нашем
+                        веб-сайт Instagram заставка, история instagram будет загружена в высоком качестве Full HD с помощью онлайн-заставки instagram. Вы также
+                        можете использовать
+                        сервис для просмотра историй в Instagram, где вы можете смотреть анонимные истории и хайлайтеры.</>}
+
                 </p>
             </div>
         </div>

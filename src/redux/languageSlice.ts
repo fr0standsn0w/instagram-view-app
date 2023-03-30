@@ -1,12 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {ILanguage} from "../interfaces/languageInterface";
 
 interface initialStateInterface {
-    data?: ILanguage[]
+    data: string
 }
 
 const initialState: initialStateInterface = {
-    data: []
+    data: ''
 }
 
 const languageSlice = createSlice({
@@ -17,7 +16,6 @@ const languageSlice = createSlice({
             state.data = action.payload
         }
     }
-
 })
 
 export default languageSlice.reducer;
