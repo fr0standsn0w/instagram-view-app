@@ -8,7 +8,6 @@ const ProfileInfo: FC = () => {
     const profileInfo: ProfileI = useSelector((state: IRootState) => state?.profile?.data)
     const {ig_info} = profileInfo
     const profilePic = profileInfo?.cache?.profile_pic
-    console.log(profileInfo)
     return (
         <div className={style.profileInfoContainer}>
             <p className={style.browsing}>Anonymous browsing</p>

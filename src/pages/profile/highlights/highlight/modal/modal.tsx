@@ -54,7 +54,7 @@ const Modal = ({open, setOpen, allData, username}: ModalI) => {
         }
         return null
     }
-    const downloadImage = (src: string) => {
+    const downloadImage = async (src: string) => {
         const img = new Image();
         img.crossOrigin = 'anonymous';
         img.src = src;
@@ -93,7 +93,7 @@ const Modal = ({open, setOpen, allData, username}: ModalI) => {
                 }
             </AnimatePresence>
         </>
-            );
-            };
+    );
+};
 
-            export default Modal;
+export default Modal;

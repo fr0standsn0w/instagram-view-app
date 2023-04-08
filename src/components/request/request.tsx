@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {reset, setProfile} from "../../redux/profileSlice";
 import {useNavigate} from "react-router-dom";
 import {IRootState} from "../../redux/store";
+import {setError} from "../../redux/errorSlice";
 
 const Request = () => {
     const language: string = useSelector((state: IRootState) => state.language.data)
@@ -11,32 +12,33 @@ const Request = () => {
     const dispatch = useDispatch()
     const [name, setName] = useState<string>('')
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)
-    const [response, setResponse] = useState<any>()
+    const [response, setResponse] = useState<any>([])
     const [loading, setLoading] = useState<boolean>(true)
     const [err, setErr] = useState<string>()
     const handleSubmit = async () => {
         if (!name) {
-            setErr(()=> (language==='en' ? 'Paste name account' : 'Введите имя аккаунта'))
+            setErr(() => (language === 'EN' ? 'Paste name account' : 'Введите имя аккаунта'))
             return
+        } else {
+            setErr('')
         }
-        await fetch(`https://api.instafile.net/getinst.php?nm=${name}&type=profile`)
+        await fetch(`https://api.instafile.net/getinst.php?nm=${name}&type=profile`, {})
             .then(res => res.json())
             .then(data => {
                 setResponse(data)
                 setLoading(false)
             })
-            .catch((error:any) => {
+            .catch((error: any) => {
                 setErr(error)
-                console.log(err)
             })
     }
 
     useEffect(() => {
         if (!loading) {
+            dispatch(setError(''))
             dispatch(setProfile(response))
         }
     }, [dispatch, loading, response])
-
     return (
         <div className={style.requestContainer}>
             <div className={style.requestBody}>
@@ -58,6 +60,7 @@ const Request = () => {
                         </label>
                         <input type="text" placeholder={language === 'EN' ? "Paste name account" : "Вставьте название учетной записи"} value={name}
                                onChange={handleChange}/>
+                        <p style={{textAlign: "left", color: "red"}}>{err}</p>
                     </div>
                     <div className={style.buttonContainer}>
                         <button onClick={() => {

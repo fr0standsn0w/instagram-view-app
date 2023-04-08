@@ -10,8 +10,8 @@ const Highlight = ({pic}: highlightI) => {
     const [open, setOpen] = useState(false)
     const downloadImage = (src:string) => {
         const img = new Image();
-        img.crossOrigin = 'anonymous';
         img.src = src;
+        img.crossOrigin = 'anonymous';
         img.onload = () => {
             const canvas = document.createElement('canvas');
             const ctx : any = canvas.getContext('2d');

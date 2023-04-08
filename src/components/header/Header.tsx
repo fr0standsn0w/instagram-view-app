@@ -39,7 +39,6 @@ const Header = () => {
     const isActive = useMediaQuery('(max-width: 425px)');
     const [menuActive, setMenuActive] = useState(false)
     const language = useSelector((state:IRootState) => state.language.data)
-    console.log(isOpen)
     const items = [
         {id: 1, value: `${language === 'EN' ? "Profile" : "Профиль"}`, href: '/profile'},
         {id: 2, value: `${language === 'EN' ? "Posts" : "Посты"}`, href: '/'},
